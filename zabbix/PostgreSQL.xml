@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.0</version>
-    <date>2017-11-17T21:29:53Z</date>
+    <date>2017-11-18T12:24:53Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -2257,7 +2257,7 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>db.odbc.select[streaming.lag.bytes,{#CLIENT_ADDR}]</key>
+                            <key>db.odbc.select[streaming.lag.bytes.{#CLIENT_ADDR},{$DSN}]</key>
                             <delay>60</delay>
                             <history>7</history>
                             <trends>365</trends>
@@ -2398,7 +2398,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                             <dependencies/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Template App PostgreSQL:db.odbc.select[streaming.lag.bytes,{#CLIENT_ADDR}].last()}&gt;{$PG_SR_LAG_BYTE}</expression>
+                            <expression>{Template App PostgreSQL:db.odbc.select[streaming.lag.bytes.{#CLIENT_ADDR},{$DSN}].last()}&gt;{$PG_SR_LAG_BYTE}</expression>
                             <name>PostgreSQL streaming lag between {HOSTNAME} and {#CLIENT_ADDR} to high ({ITEM.LASTVALUE})</name>
                             <url/>
                             <status>0</status>
@@ -2446,7 +2446,7 @@ host zabbix postgres 1.2.3.4/32 trust</description>
                                     <type>0</type>
                                     <item>
                                         <host>Template App PostgreSQL</host>
-                                        <key>db.odbc.select[streaming.lag.bytes,{#CLIENT_ADDR}]</key>
+                                        <key>db.odbc.select[streaming.lag.bytes.{#CLIENT_ADDR},{$DSN}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
