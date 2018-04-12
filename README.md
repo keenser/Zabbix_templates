@@ -8,6 +8,7 @@ Package contents folowing templates:
 - SNR_s300.xml - SNR s300 template. Tested on SNR-S300G-24FX
 - RDP_EcoNat.xml - RDP EcoNat template. Hardcoded lld functionality.
 - PostgreSQL.xml - modified PostgreSQL template using ODBC driver
+- Unbound.xml - zabbix 3.4 template for unbound dns using dependent items
 
 Using snmp-mibs-downloader install MIBs before using network templates
 
