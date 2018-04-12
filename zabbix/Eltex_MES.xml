@@ -519,43 +519,6 @@
                     <jmx_endpoint/>
                     <master_item/>
                 </item>
-                <item>
-                    <name>mac address count vlan 2600</name>
-                    <type>4</type>
-                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                    <snmp_oid>Q-BRIDGE-MIB::dot1qFdbDynamicCount.2600</snmp_oid>
-                    <key>vlan.mac.count[2600]</key>
-                    <delay>1m</delay>
-                    <history>1w</history>
-                    <trends>365d</trends>
-                    <status>0</status>
-                    <value_type>3</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications/>
-                    <valuemap/>
-                    <logtimefmt/>
-                    <preprocessing/>
-                    <jmx_endpoint/>
-                    <master_item/>
-                </item>
             </items>
             <discovery_rules/>
             <httptests/>
@@ -690,22 +653,6 @@ and&#13;
 or&#13;
 {Template SNMP MES Switch:system.battery[status].last()}&lt;&gt;5</recovery_expression>
             <name>DC Battery not present</name>
-            <correlation_mode>0</correlation_mode>
-            <correlation_tag/>
-            <url/>
-            <status>0</status>
-            <priority>2</priority>
-            <description/>
-            <type>0</type>
-            <manual_close>0</manual_close>
-            <dependencies/>
-            <tags/>
-        </trigger>
-        <trigger>
-            <expression>{Template SNMP MES Switch:vlan.mac.count[2600].sum(#2)}=0</expression>
-            <recovery_mode>0</recovery_mode>
-            <recovery_expression/>
-            <name>{HOST.NAME} multicast vlan 2600 no mac</name>
             <correlation_mode>0</correlation_mode>
             <correlation_tag/>
             <url/>
