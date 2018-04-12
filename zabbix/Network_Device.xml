@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.4</version>
-    <date>2018-04-12T00:37:19Z</date>
+    <date>2018-04-12T00:56:15Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -139,16 +139,16 @@
                         <formula/>
                         <conditions>
                             <condition>
-                                <macro>{#IFALIAS}</macro>
-                                <value>@Filled interface description</value>
-                                <operator>8</operator>
-                                <formulaid>A</formulaid>
-                            </condition>
-                            <condition>
                                 <macro>{#SNMPVALUE}</macro>
                                 <value>@Network interfaces for discovery</value>
                                 <operator>8</operator>
                                 <formulaid>B</formulaid>
+                            </condition>
+                            <condition>
+                                <macro>{#IFALIAS}</macro>
+                                <value>.+</value>
+                                <operator>8</operator>
+                                <formulaid>A</formulaid>
                             </condition>
                         </conditions>
                     </filter>
