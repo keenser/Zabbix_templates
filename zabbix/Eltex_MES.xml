@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
-    <version>3.0</version>
-    <date>2017-11-17T21:32:49Z</date>
+    <version>3.4</version>
+    <date>2018-04-12T00:55:30Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -19,28 +19,23 @@
             </groups>
             <applications>
                 <application>
-                    <name>General</name>
-                </application>
-                <application>
-                    <name>Interfaces</name>
+                    <name>Power</name>
                 </application>
             </applications>
             <items>
                 <item>
-                    <name>BPDU Guard</name>
+                    <name>AC Power Supply status change</name>
                     <type>17</type>
                     <snmp_community/>
-                    <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>snmptrap[&quot;RADLAN-TRAPS-MIB::bpduGuardPortSuspended&quot;]</key>
+                    <key>snmptrap[&quot;RADLAN-TRAPS-MIB::rlEnvMonPowerSupplyStateChange(.|[[:space:]])*PS# 1 status changed &quot;]</key>
                     <delay>0</delay>
-                    <history>90</history>
+                    <history>1w</history>
                     <trends>0</trends>
-                    <status>1</status>
+                    <status>0</status>
                     <value_type>2</value_type>
                     <allowed_hosts/>
                     <units/>
-                    <delta>0</delta>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -48,11 +43,8 @@
                     <snmpv3_authpassphrase/>
                     <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
-                    <data_type>0</data_type>
                     <authtype>0</authtype>
                     <username/>
                     <password/>
@@ -63,27 +55,153 @@
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
-                            <name>Interfaces</name>
+                            <name>Power</name>
                         </application>
                     </applications>
                     <valuemap/>
                     <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>DC Battery status change</name>
+                    <type>17</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>snmptrap[&quot;RADLAN-TRAPS-MIB::rlEnvMonPowerSupplyStateChange(.|[[:space:]])*PS# 2 status changed &quot;]</key>
+                    <delay>0</delay>
+                    <history>1w</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>2</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Power</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>DC Battery charge</name>
+                    <type>4</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>ELTEX-MES::eltMes.11.1.1.3.67109186</snmp_oid>
+                    <key>system.battery[charge]</key>
+                    <delay>1m</delay>
+                    <history>90d</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units>%</units>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Power</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>DC Battery status</name>
+                    <type>4</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>ELTEX-MES::eltMes.11.1.1.2.67109186</snmp_oid>
+                    <key>system.battery[status]</key>
+                    <delay>1m</delay>
+                    <history>90d</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Power</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>Eltex power supply unit status</name>
+                    </valuemap>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
                 </item>
                 <item>
                     <name>CPU usage</name>
                     <type>4</type>
                     <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                    <multiplier>0</multiplier>
                     <snmp_oid>RADLAN-rndMng::rlCpuUtilDuringLastSecond.0</snmp_oid>
                     <key>system.cpu</key>
-                    <delay>60</delay>
-                    <history>7</history>
-                    <trends>365</trends>
+                    <delay>1m</delay>
+                    <history>1w</history>
+                    <trends>365d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units>%</units>
-                    <delta>0</delta>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -91,11 +209,8 @@
                     <snmpv3_authpassphrase/>
                     <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
-                    <data_type>0</data_type>
                     <authtype>0</authtype>
                     <username/>
                     <password/>
@@ -111,65 +226,23 @@
                     </applications>
                     <valuemap/>
                     <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
                 </item>
                 <item>
-                    <name>Chassis mac address</name>
+                    <name>Hardware version</name>
                     <type>4</type>
                     <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                    <multiplier>0</multiplier>
-                    <snmp_oid>RADLAN-Physicaldescription-MIB::rlPhdStackMacAddr.1</snmp_oid>
-                    <key>system.mac</key>
-                    <delay>3600</delay>
-                    <history>90</history>
-                    <trends>0</trends>
-                    <status>0</status>
-                    <value_type>2</value_type>
-                    <allowed_hosts/>
-                    <units/>
-                    <delta>0</delta>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <data_type>0</data_type>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <description/>
-                    <inventory_link>0</inventory_link>
-                    <applications>
-                        <application>
-                            <name>General</name>
-                        </application>
-                    </applications>
-                    <valuemap/>
-                    <logtimefmt/>
-                </item>
-                <item>
-                    <name>Chassis serial</name>
-                    <type>4</type>
-                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                    <multiplier>0</multiplier>
-                    <snmp_oid>RADLAN-Physicaldescription-MIB::rlPhdUnitGenParamSerialNum.1</snmp_oid>
-                    <key>system.serial</key>
-                    <delay>3600</delay>
-                    <history>90</history>
+                    <snmp_oid>RADLAN-DEVICEPARAMS-MIB::genGroupHWVersion.0</snmp_oid>
+                    <key>system.hardware</key>
+                    <delay>1h</delay>
+                    <history>90d</history>
                     <trends>0</trends>
                     <status>0</status>
                     <value_type>1</value_type>
                     <allowed_hosts/>
                     <units/>
-                    <delta>0</delta>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -177,11 +250,133 @@
                     <snmpv3_authpassphrase/>
                     <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
-                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>30</inventory_link>
+                    <applications>
+                        <application>
+                            <name>General</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Chassis mac address</name>
+                    <type>4</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>RADLAN-Physicaldescription-MIB::rlPhdStackMacAddr.1</snmp_oid>
+                    <key>system.mac</key>
+                    <delay>1h</delay>
+                    <history>90d</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>1</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>12</inventory_link>
+                    <applications>
+                        <application>
+                            <name>General</name>
+                        </application>
+                    </applications>
+                    <valuemap/>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>AC Power Supply status</name>
+                    <type>4</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>RADLAN-Physicaldescription-MIB::rlPhdUnitEnvParamMainPSStatus.1</snmp_oid>
+                    <key>system.power[status]</key>
+                    <delay>1m</delay>
+                    <history>90d</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>Power</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>Eltex power supply unit status</name>
+                    </valuemap>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+                <item>
+                    <name>Chassis serial</name>
+                    <type>4</type>
+                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
+                    <snmp_oid>RADLAN-Physicaldescription-MIB::rlPhdUnitGenParamSerialNum.1</snmp_oid>
+                    <key>system.serial</key>
+                    <delay>1h</delay>
+                    <history>90d</history>
+                    <trends>0</trends>
+                    <status>0</status>
+                    <value_type>1</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
                     <authtype>0</authtype>
                     <username/>
                     <password/>
@@ -197,22 +392,23 @@
                     </applications>
                     <valuemap/>
                     <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
                 </item>
                 <item>
-                    <name>MES Temperature sensor 1</name>
+                    <name>MES2124 Temperature sensor</name>
                     <type>4</type>
                     <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                    <multiplier>0</multiplier>
                     <snmp_oid>RADLAN-Physicaldescription-MIB::rlPhdUnitEnvParamTempSensorValue.1</snmp_oid>
-                    <key>system.temperature[1]</key>
-                    <delay>60</delay>
-                    <history>7</history>
-                    <trends>365</trends>
+                    <key>system.temperature[2124]</key>
+                    <delay>1m</delay>
+                    <history>1w</history>
+                    <trends>365d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units>C</units>
-                    <delta>0</delta>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -220,18 +416,15 @@
                     <snmpv3_authpassphrase/>
                     <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
-                    <data_type>0</data_type>
                     <authtype>0</authtype>
                     <username/>
                     <password/>
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description>Temperature sensor 1 in C</description>
+                    <description>Temperature sensor 2124 in C</description>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
@@ -240,22 +433,23 @@
                     </applications>
                     <valuemap/>
                     <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
                 </item>
                 <item>
-                    <name>MES Temperature sensor 2</name>
+                    <name>MES2324 Temperature sensor</name>
                     <type>4</type>
                     <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                    <multiplier>0</multiplier>
-                    <snmp_oid>RADLAN-Physicaldescription-MIB::rlPhdUnitEnvParamTempSensor2Value.1</snmp_oid>
-                    <key>system.temperature[2]</key>
-                    <delay>60</delay>
-                    <history>7</history>
-                    <trends>365</trends>
+                    <snmp_oid>RADLAN-Physicaldescription-MIB::rlPhdUnitEnvParamTempSensorStatus.1</snmp_oid>
+                    <key>system.temperature[2324]</key>
+                    <delay>1m</delay>
+                    <history>1w</history>
+                    <trends>365d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units>C</units>
-                    <delta>0</delta>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -263,18 +457,15 @@
                     <snmpv3_authpassphrase/>
                     <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
-                    <data_type>0</data_type>
                     <authtype>0</authtype>
                     <username/>
                     <password/>
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description>Temperature sensor 2 in C</description>
+                    <description>Temperature sensor 2324 in C</description>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
@@ -283,22 +474,23 @@
                     </applications>
                     <valuemap/>
                     <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
                 </item>
                 <item>
-                    <name>MES Temperature sensor 3</name>
+                    <name>Software version</name>
                     <type>4</type>
                     <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                    <multiplier>0</multiplier>
-                    <snmp_oid>RADLAN-Physicaldescription-MIB::rlPhdUnitEnvParamTempSensor3Value.1</snmp_oid>
-                    <key>system.temperature[3]</key>
-                    <delay>60</delay>
-                    <history>7</history>
-                    <trends>365</trends>
+                    <snmp_oid>RADLAN-DEVICEPARAMS-MIB::rndBrgVersion.0</snmp_oid>
+                    <key>system.version</key>
+                    <delay>1h</delay>
+                    <history>90d</history>
+                    <trends>0</trends>
                     <status>0</status>
-                    <value_type>3</value_type>
+                    <value_type>1</value_type>
                     <allowed_hosts/>
-                    <units>C</units>
-                    <delta>0</delta>
+                    <units/>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -306,19 +498,16 @@
                     <snmpv3_authpassphrase/>
                     <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
-                    <data_type>0</data_type>
                     <authtype>0</authtype>
                     <username/>
                     <password/>
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description>Temperature sensor 3 in C</description>
-                    <inventory_link>0</inventory_link>
+                    <description/>
+                    <inventory_link>5</inventory_link>
                     <applications>
                         <application>
                             <name>General</name>
@@ -326,22 +515,23 @@
                     </applications>
                     <valuemap/>
                     <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
                 </item>
                 <item>
                     <name>mac address count vlan 2600</name>
                     <type>4</type>
                     <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                    <multiplier>0</multiplier>
                     <snmp_oid>Q-BRIDGE-MIB::dot1qFdbDynamicCount.2600</snmp_oid>
                     <key>vlan.mac.count[2600]</key>
-                    <delay>60</delay>
-                    <history>7</history>
-                    <trends>365</trends>
+                    <delay>1m</delay>
+                    <history>1w</history>
+                    <trends>365d</trends>
                     <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units/>
-                    <delta>0</delta>
                     <snmpv3_contextname/>
                     <snmpv3_securityname/>
                     <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -349,11 +539,8 @@
                     <snmpv3_authpassphrase/>
                     <snmpv3_privprotocol>0</snmpv3_privprotocol>
                     <snmpv3_privpassphrase/>
-                    <formula>1</formula>
-                    <delay_flex/>
                     <params/>
                     <ipmi_sensor/>
-                    <data_type>0</data_type>
                     <authtype>0</authtype>
                     <username/>
                     <password/>
@@ -365,151 +552,186 @@
                     <applications/>
                     <valuemap/>
                     <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
                 </item>
             </items>
-            <discovery_rules>
-                <discovery_rule>
-                    <name>Network interfaces</name>
-                    <type>4</type>
-                    <snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-                    <snmp_oid>discovery[{#SNMPVALUE},IF-MIB::ifDescr, {#IFALIAS}, IF-MIB::ifAlias, {#IFNAME}, IF-MIB::ifName]</snmp_oid>
-                    <key>ifMDescr</key>
-                    <delay>300</delay>
-                    <status>0</status>
-                    <allowed_hosts/>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <delay_flex/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <filter>
-                        <evaltype>0</evaltype>
-                        <formula/>
-                        <conditions>
-                            <condition>
-                                <macro>{#IFALIAS}</macro>
-                                <value>@Filled interface description</value>
-                                <operator>8</operator>
-                                <formulaid>A</formulaid>
-                            </condition>
-                            <condition>
-                                <macro>{#SNMPVALUE}</macro>
-                                <value>@Network interfaces for discovery</value>
-                                <operator>8</operator>
-                                <formulaid>B</formulaid>
-                            </condition>
-                        </conditions>
-                    </filter>
-                    <lifetime>30</lifetime>
-                    <description/>
-                    <item_prototypes>
-                        <item_prototype>
-                            <name>BPDU Guard for {#SNMPVALUE}</name>
-                            <type>17</type>
-                            <snmp_community/>
-                            <multiplier>0</multiplier>
-                            <snmp_oid/>
-                            <key>snmptrap[&quot;RADLAN-TRAPS-MIB::bpduGuardPortSuspended(.|[[:space:]])*BPDU is received on interface {#IFNAME}\.&quot;]</key>
-                            <delay>0</delay>
-                            <history>7</history>
-                            <trends>0</trends>
-                            <status>0</status>
-                            <value_type>2</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <delta>0</delta>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <formula>1</formula>
-                            <delay_flex/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <data_type>0</data_type>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Interfaces</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
-                            <application_prototypes/>
-                        </item_prototype>
-                    </item_prototypes>
-                    <trigger_prototypes>
-                        <trigger_prototype>
-                            <expression>{Template SNMP MES Switch:snmptrap[&quot;RADLAN-TRAPS-MIB::bpduGuardPortSuspended(.|[[:space:]])*BPDU is received on interface {#IFNAME}\.&quot;].nodata(15m)}=0</expression>
-                            <name>{HOST.NAME} BPDU Guard Port Suspended {#SNMPVALUE}</name>
-                            <url/>
-                            <status>0</status>
-                            <priority>2</priority>
-                            <description/>
-                            <type>0</type>
-                            <dependencies/>
-                        </trigger_prototype>
-                    </trigger_prototypes>
-                    <graph_prototypes/>
-                    <host_prototypes/>
-                </discovery_rule>
-            </discovery_rules>
+            <discovery_rules/>
+            <httptests/>
             <macros/>
-            <templates/>
-            <screens/>
+            <templates>
+                <template>
+                    <name>Template SNMP Network Device Interfaces</name>
+                </template>
+            </templates>
+            <screens>
+                <screen>
+                    <name>Switch status</name>
+                    <hsize>2</hsize>
+                    <vsize>2</vsize>
+                    <screen_items>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <width>440</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>CPU usage</name>
+                                <host>Template SNMP MES Switch</host>
+                            </resource>
+                            <max_columns>3</max_columns>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <width>440</width>
+                            <height>100</height>
+                            <x>1</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>DC Battery status</name>
+                                <host>Template SNMP MES Switch</host>
+                            </resource>
+                            <max_columns>3</max_columns>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>0</resourcetype>
+                            <width>500</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>1</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Temperature sensors</name>
+                                <host>Template SNMP MES Switch</host>
+                            </resource>
+                            <max_columns>3</max_columns>
+                            <application/>
+                        </screen_item>
+                    </screen_items>
+                </screen>
+            </screens>
         </template>
     </templates>
     <triggers>
         <trigger>
-            <expression>{Template SNMP MES Switch:snmptrap[&quot;RADLAN-TRAPS-MIB::bpduGuardPortSuspended&quot;].nodata(15m)}=0</expression>
-            <name>{HOST.NAME} BPDU Guard Port Suspended</name>
-            <url/>
-            <status>1</status>
-            <priority>1</priority>
-            <description/>
-            <type>1</type>
-            <dependencies/>
-        </trigger>
-        <trigger>
-            <expression>{Template SNMP MES Switch:vlan.mac.count[2600].sum(#2)}=0</expression>
-            <name>{HOST.NAME} multicast vlan 2600 no mac</name>
+            <expression>{Template SNMP MES Switch:snmptrap[&quot;RADLAN-TRAPS-MIB::rlEnvMonPowerSupplyStateChange(.|[[:space:]])*PS# 1 status changed &quot;].str(changed - not operational)}=1&#13;
+and&#13;
+{Template SNMP MES Switch:snmptrap[&quot;RADLAN-TRAPS-MIB::rlEnvMonPowerSupplyStateChange(.|[[:space:]])*PS# 1 status changed &quot;].nodata(1m)}=0</expression>
+            <recovery_mode>1</recovery_mode>
+            <recovery_expression>{Template SNMP MES Switch:snmptrap[&quot;RADLAN-TRAPS-MIB::rlEnvMonPowerSupplyStateChange(.|[[:space:]])*PS# 1 status changed &quot;].str(changed - not operational)}=0&#13;
+or&#13;
+{Template SNMP MES Switch:system.power[status].last()}=1</recovery_expression>
+            <name>AC Power supply not operational</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
             <url/>
             <status>0</status>
-            <priority>2</priority>
+            <priority>3</priority>
             <description/>
             <type>0</type>
+            <manual_close>0</manual_close>
             <dependencies/>
+            <tags/>
         </trigger>
         <trigger>
-            <expression>{Template SNMP MES Switch:system.temperature[1].last()}&gt;55 or {Template SNMP MES Switch:system.temperature[2].last()}&gt;55 or {Template SNMP MES Switch:system.temperature[3].last()}&gt;55</expression>
-            <name>{HOST.NAME} Temperature Eltex high limit</name>
+            <expression>{Template SNMP MES Switch:system.battery[charge].last()}&lt;100&#13;
+and&#13;
+{Template SNMP MES Switch:system.battery[charge].timeleft(30m,,0)}&lt;15m</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>DC Battery low energy</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
             <url/>
             <status>0</status>
             <priority>4</priority>
             <description/>
             <type>0</type>
+            <manual_close>0</manual_close>
             <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template SNMP MES Switch:snmptrap[&quot;RADLAN-TRAPS-MIB::rlEnvMonPowerSupplyStateChange(.|[[:space:]])*PS# 2 status changed &quot;].str(changed - not present)}=1&#13;
+and&#13;
+{Template SNMP MES Switch:snmptrap[&quot;RADLAN-TRAPS-MIB::rlEnvMonPowerSupplyStateChange(.|[[:space:]])*PS# 2 status changed &quot;].nodata(1m)}=0</expression>
+            <recovery_mode>1</recovery_mode>
+            <recovery_expression>{Template SNMP MES Switch:snmptrap[&quot;RADLAN-TRAPS-MIB::rlEnvMonPowerSupplyStateChange(.|[[:space:]])*PS# 2 status changed &quot;].str(changed - not present)}=0&#13;
+or&#13;
+{Template SNMP MES Switch:system.battery[status].last()}&lt;&gt;5</recovery_expression>
+            <name>DC Battery not present</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template SNMP MES Switch:vlan.mac.count[2600].sum(#2)}=0</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>{HOST.NAME} multicast vlan 2600 no mac</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template SNMP MES Switch:system.temperature[2124].last()}&gt;55 or {Template SNMP MES Switch:system.temperature[2324].last()}&gt;55</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>{HOST.NAME} Temperature Eltex high limit</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
         </trigger>
     </triggers>
     <graphs>
@@ -545,5 +767,128 @@
                 </graph_item>
             </graph_items>
         </graph>
+        <graph>
+            <name>DC Battery status</name>
+            <width>900</width>
+            <height>200</height>
+            <yaxismin>0.0000</yaxismin>
+            <yaxismax>100.0000</yaxismax>
+            <show_work_period>1</show_work_period>
+            <show_triggers>1</show_triggers>
+            <type>0</type>
+            <show_legend>1</show_legend>
+            <show_3d>0</show_3d>
+            <percent_left>0.0000</percent_left>
+            <percent_right>0.0000</percent_right>
+            <ymin_type_1>1</ymin_type_1>
+            <ymax_type_1>1</ymax_type_1>
+            <ymin_item_1>0</ymin_item_1>
+            <ymax_item_1>0</ymax_item_1>
+            <graph_items>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>1</drawtype>
+                    <color>1A7C11</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template SNMP MES Switch</host>
+                        <key>system.battery[charge]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>F63100</color>
+                    <yaxisside>1</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template SNMP MES Switch</host>
+                        <key>system.battery[status]</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>Temperature sensors</name>
+            <width>900</width>
+            <height>200</height>
+            <yaxismin>0.0000</yaxismin>
+            <yaxismax>100.0000</yaxismax>
+            <show_work_period>1</show_work_period>
+            <show_triggers>1</show_triggers>
+            <type>0</type>
+            <show_legend>1</show_legend>
+            <show_3d>0</show_3d>
+            <percent_left>0.0000</percent_left>
+            <percent_right>0.0000</percent_right>
+            <ymin_type_1>1</ymin_type_1>
+            <ymax_type_1>0</ymax_type_1>
+            <ymin_item_1>0</ymin_item_1>
+            <ymax_item_1>0</ymax_item_1>
+            <graph_items>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>1A7C11</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template SNMP MES Switch</host>
+                        <key>system.temperature[2124]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>F63100</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template SNMP MES Switch</host>
+                        <key>system.temperature[2324]</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
     </graphs>
+    <value_maps>
+        <value_map>
+            <name>Eltex power supply unit status</name>
+            <mappings>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>normal</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>warning</newvalue>
+                </mapping>
+                <mapping>
+                    <value>3</value>
+                    <newvalue>critical</newvalue>
+                </mapping>
+                <mapping>
+                    <value>4</value>
+                    <newvalue>shutdown</newvalue>
+                </mapping>
+                <mapping>
+                    <value>5</value>
+                    <newvalue>notPresent</newvalue>
+                </mapping>
+                <mapping>
+                    <value>6</value>
+                    <newvalue>notFunctioning</newvalue>
+                </mapping>
+                <mapping>
+                    <value>7</value>
+                    <newvalue>restore</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
 </zabbix_export>
