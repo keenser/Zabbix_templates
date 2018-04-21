@@ -1,5 +1,5 @@
 # Zabbix_templates
-Various zabbix 3.2 templates
+Various zabbix 3.4 templates
 
 Package contents folowing templates:
 - Network_Device.xml - common template for network device interfaces
